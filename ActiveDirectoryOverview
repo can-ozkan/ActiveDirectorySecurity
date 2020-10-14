@@ -1,0 +1,4 @@
+Active Directory is a directory that is developed by Microsoft to manage Windows domain environment. It stores information related to objects such as Computers, Users etc. 
+(Phone book for Windows) It performs authentication using Kerberos tickets. Non-Windows devices can perform authentication process through RADIUS or LDAP.
+Active Directory is one of the most commonly used identity management service. In this type of assessment, I generally focus on abusing features, trusts, misconfigurations,
+components and more.
