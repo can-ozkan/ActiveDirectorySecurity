@@ -34,4 +34,6 @@ OUs are Active Directory containers that can contain users, groups, computers an
 manage a collection of objects in a consistent way, delegate permissions to administer groups of objects, apply policies.
 
 6) Trusts
+Trusts provide a mechanism for users to gain access to resources in another domain.
 
+Source : Microsoft Virtual Academy
