@@ -1,4 +1,11 @@
 Active Directory is a directory that is developed by Microsoft to manage Windows domain environment. It stores information related to objects such as Computers, Users etc. 
 (Phone book for Windows) It performs authentication using Kerberos tickets. Non-Windows devices can perform authentication process through RADIUS or LDAP.
+
 Active Directory is one of the most commonly used identity management service. In this type of assessment, I generally focus on abusing features, trusts, misconfigurations,
 components and more.
+
+Physical Active Directory Components
+1) Domain Controllers
+A DC is a server with the AD DS server role installed that has specifically been promoted to a domain controller. DCs host a copy of the AD DS directory store, provide
+authentication and authorization services, replicate updates to other domain controllers in the domain and forest, allow administrative access to manage user accounts and network
+resources
