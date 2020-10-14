@@ -7,5 +7,9 @@ components and more.
 Physical Active Directory Components
 1) Domain Controllers
 A DC is a server with the AD DS server role installed that has specifically been promoted to a domain controller. DCs host a copy of the AD DS directory store, provide
-authentication and authorization services, replicate updates to other domain controllers in the domain and forest, allow administrative access to manage user accounts and network
-resources
+authentication and authorization services, replicate updates to other domain controllers in the domain and forest, allow administrative access to manage user accounts and 
+network resources.
+
+2) AD DS Data Store
+The AD DS Data Store contains the database files and processes that store and manage directory information for users, services and applications. It consists of the Ntds.dit
+file. It is stored by default in the %SystemRoot%\NTDS on all domain controllers. It is only accessible only through DC processes and protocols.
