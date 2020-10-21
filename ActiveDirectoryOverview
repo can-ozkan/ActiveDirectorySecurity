@@ -61,4 +61,19 @@ No salting operation.
 Brute force attack, rainbow table attacks can be performed.
 john --format=lm <hash_value> --wordlist <wordlist_path>
 
+NTLM Hashes
+Actively used in modern systems.
+It is case-sensitive.
+MD4 is used.
+Without recovering password, pass the hash can be applied.
+No salting.
+john --format=nt <hash_value> --wordlist <wordlist_path>
+
+NTDS.dit
+It is the database of Active Directory.
+It is located under %SystemRoot%\Windows\NTDS
+Favorite file of any attacker.
+It can be copied through Shadow copy
+
+
 
