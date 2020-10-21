@@ -37,3 +37,14 @@ manage a collection of objects in a consistent way, delegate permissions to admi
 Trusts provide a mechanism for users to gain access to resources in another domain.
 
 Source : Microsoft Virtual Academy
+
+SAM File (Security Account Manager)
+It is located under %SystemRoot%/system32/config/SAM
+It contains local accounts for Windows systems
+Once you obtain SAM and SYSTEM file, then you can launch attacks against password hashes such as brute force, rainbow table etc.
+It can be copied through Shadow or Registry Copy
+SAM file is encrypted by default
+reg save HKLM\SAM ./SAM
+reg save HKLM\SYSTEM ./SYSTEM
+
+
