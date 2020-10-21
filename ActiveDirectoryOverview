@@ -58,5 +58,7 @@ A password can consist of maximum 14 letters. If password is less than 14, it is
 Password is broken into 2 parts, each with 7 characters. Each part is encrypted with DES. Eventually, we obtain 2 hashes with 8 bytes.
 These hashes are concatenated;thus, 16 bytes hash is created.
 No salting operation.
+Brute force attack, rainbow table attacks can be performed.
+john --format=lm <hash_value> --wordlist <wordlist_path>
 
 
