@@ -50,4 +50,13 @@ secretsdump.py -sam <SAM_Name> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL
   Administrator:500:<LM_HASH>:<NTLM_HASH>:::
   Guest:500:<LM_HASH>:<NTLM_HASH>:::
 
+LM Hashes
+LM Hashes were used in earlier systems. These are not used actively anymore. For LM Hash value, current systems put NULL value.
+It was active, by default, before Windows Vista/2008
+If password contains any letter, the letter is turned into Capital letter. Therefore, it is not case-sensitive.
+A password can consist of maximum 14 letters. If password is less than 14, it is padded with NULL.
+Password is broken into 2 parts, each with 7 characters. Each part is encrypted with DES. Eventually, we obtain 2 hashes with 8 bytes.
+These hashes are concatenated;thus, 16 bytes hash is created.
+No salting operation.
+
 
