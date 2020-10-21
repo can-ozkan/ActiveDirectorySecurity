@@ -82,5 +82,9 @@ It can be copied through Shadow copy
   secretsdump.py -ntds <ntds.dit> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
 NTDS.dit file is encrypted by default.
 
+Pass The Hash
+By using hashes gathered during initial exploitation, we can move laterally on the network by performing Pass The Hash attack.
+Metasploit -> exploit/windows/smb/psexec
+
 
 
