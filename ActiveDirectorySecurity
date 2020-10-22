@@ -81,3 +81,14 @@ Can be performed cracking or smb relay.
 Responder is used to perform LLMNR and NetBIOS poisoining.
 responder -I <interface>
 john <hash_file> --format=netntlmv2 --wordlist=<wordlist>
+
+
+Domain Reconnaissance
+Net users & net users /domain
+Net user <username>
+Net localgroup
+Net localgroup <groupname>
+Echo %userdomain%
+Net group "Domain Admins" /domain
+Net accounts /domain
+Nltest /domain_trusts
