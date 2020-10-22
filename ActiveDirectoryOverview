@@ -99,6 +99,23 @@ Mitigation : Windows Defender Credential Guard
 Windows Authentication
 Basically, Kerberos and NTLM Challange & Response authentication mechanisms are used in Windows environment.
 
+NTLM C & R
+LM - NTLM not equal to NTLMv1 - NTLMv2 - NetNTLM
+You cannot perform pass the hash with NetNTLM, but you can relay
+
+LLMNR & NetBIOS-NS Poisoining
+LLMNR (Link Local Multicast Name Resolution) is used in LAN in order to resolve IP-hostname. Once you get no result with DNS, LLMNR is used.
+LLMNR works on TCP/UDP  5355
+NetBIOS (Network Basic Input/Output Service) is an API used to communicate among systems in LAN. NetBIOS-NS (Name Service) is used to resolve names. TCP/UDP Port No 137
+
+Resolving steps in Windows systems
+1) Local DNS Cache
+2) Hosts file
+3) DNS
+4) LLMNR
+5) NetBIOS-NS
+
+
 
 
 
