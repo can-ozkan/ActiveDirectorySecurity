@@ -92,3 +92,6 @@ Echo %userdomain%
 Net group "Domain Admins" /domain
 Net accounts /domain
 Nltest /domain_trusts
+
+BloodHound
+It is used to visualize AD database.
