@@ -115,6 +115,13 @@ Resolving steps in Windows systems
 4) LLMNR
 5) NetBIOS-NS
 
+LLMNR and NetBIOS-NS packets are broadcasted. The first system that responds to can capture the NetNTLM hash of the target user.
+This NetNTLM C & R hash cannot pass the hash.
+Can be performed cracking or smb relay.
+Responder is used to perform LLMNR and NetBIOS poisoining.
+responder -I <interface>
+john <hash_file> --format=netntlmv2 --wordlist=<wordlist>
+
 
 
 
