@@ -95,3 +95,12 @@ Nltest /domain_trusts
 
 BloodHound
 It is used to visualize AD database.
+
+SYSVOL
+SYSVOL is a folder which resides on each and every domain controller within the domain. It contains the domains public files that need to be accessed by clients 
+and kept synchronised between domain controllers. The default location for the SYSVOL is C:\Windows\SYSVOL although it can be moved to another location during the 
+promotion of a domain controller. It’s possible but not recommended to relocate the SYSVOL after DC promotion as there is potential for error. The SYSVOL folder can 
+be accessed through its share \\domainname.com\sysvol or the local share name on the server \\servername\sysvol.
+
+smbclient \\\\<IP>\\<directory> -U 'domain\user'
+smbclient \\\\<IP> -U 'domain\user'
