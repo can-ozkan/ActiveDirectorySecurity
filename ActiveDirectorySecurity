@@ -133,5 +133,16 @@ responder -I eth0
 ntlmrelayx.py -t <ip_addr>
 
 Kerberos
+1a) Password is converted to NTLM hash, a timestamp is encrypted with the hash and sent to the KDC (Key Distribution Center) as an authenticator in the authentication
+ticket (TGT) request. (AS-REQ)
+1b) The Domain Controller (KDC) checks user information (logon restrictions, group membership, etc) and creates Ticket Granting Ticket (TGT)
+2) The TGT is encrypted, signed and delivered to the user (AS-REP). Only the Kerberos service (KRBTGT) in the domain can open and read TGT data.
+3) The user presents the TGT to the DC when requesting a Ticket Granting Service (TGS) ticket (TGS-REQ). The DC opens the TGT and validates PAC checksum. If the DC opens
+the ticket and the checksum check out, TGT = valid. The data in the TGT is effectively copied to create the TGS ticket.
+4) The TGS is encrypted using the target service accounts' NTLM password hash and sent to the user (TGS-REP).
+5) The user connects to the server hosting the service on the appropriate port and presents the TGS (AP-REQ). The service opens the TGS ticket using its NTLM password hash.
+Reference : https://adsecurity.org/?p=1667
+
+
 
   
