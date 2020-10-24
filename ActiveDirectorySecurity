@@ -143,6 +143,13 @@ the ticket and the checksum check out, TGT = valid. The data in the TGT is effec
 5) The user connects to the server hosting the service on the appropriate port and presents the TGS (AP-REQ). The service opens the TGS ticket using its NTLM password hash.
 Reference : https://adsecurity.org/?p=1667
 
+Kerberos is managed by KRBTGT account in Active Directory.
+KRBTGT is a passive account. Cannot be logged in.
+Kerberos is a stateless protocol.
+The KRBTGT is a local default account that acts as a service account for the Key Distribution Center service. This account cannot be deleted, and the account name cannot
+be changed. The KRBTGT account cannot be enabled in Active Directory.
+
+
 
 
   
